@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   FlatList,
@@ -7,13 +7,16 @@ import {
   TextInput,
   Text,
 } from 'react-native';
-import {getNewsApi} from '../../api/NewsApi';
-import {NewsArticleItem} from '../../components';
-import {styles} from './styles';
+import { Props } from '../../../App';
+import { getNewsApi } from '../../api/NewsApi';
+import { NewsArticleItem } from '../../components';
+import { Article } from '../../interfaces/newsTypes';
+import { styles } from './styles';
 
-export const HomeScreen = ({navigation}) => {
-  const [data, setData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
+
+export const HomeScreen = ({ navigation }: Props) => {
+  const [data, setData] = useState<Article[]>([]);
+  const [filteredData, setFilteredData] = useState<Article[]>([]);
   const [refresh, setRefresh] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const getApi = async () => {
@@ -48,11 +51,13 @@ export const HomeScreen = ({navigation}) => {
           <RefreshControl
             refreshing={refresh}
             onRefresh={async () => {
+              setRefresh(true)
               await getApi();
+              setRefresh(false)
             }}
           />
         }
-        renderItem={({item, index}) => {
+        renderItem={({ item, index }) => {
           return (
             <NewsArticleItem key={index} navigation={navigation} item={item} />
           );

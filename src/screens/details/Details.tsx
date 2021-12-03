@@ -9,36 +9,46 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import {styles} from './styles';
+import { Props } from '../../../App';
+import { Article } from '../../interfaces/newsTypes';
+import { styles } from './styles';
 
-export const DetailsScreen = ({navigation, route}) => {
-  const item = route.params.details;
+interface MyProps {
+  route: {
+    params: {
+      details: Article
+    }
+  }
+}
+
+export const DetailsScreen = ({ route }: MyProps) => {
+  const { details } = route.params;
   return (
     <ScrollView style={styles.container}>
       <Image
         resizeMethod="scale"
         style={styles.image}
-        source={{uri: item.urlToImage}}
+        source={{ uri: details.urlToImage }}
       />
       <View style={styles.contentContainer}>
-        <Text>Author: {item.author}</Text>
+        <Text>Author: {details.author}</Text>
       </View>
       <View style={styles.contentContainer}>
-        <Text style={styles.titleText}>{item.title}</Text>
+        <Text style={styles.titleText}>{details.title}</Text>
       </View>
       <View style={styles.contentContainer}>
-        <Text style={styles.descriptionText}>{item.description}</Text>
+        <Text style={styles.descriptionText}>{details.description}</Text>
       </View>
       <View style={styles.contentContainer}>
         <TouchableOpacity
           style={styles.linkContainer}
           onPress={() =>
-            Linking.canOpenURL(item.url).then(supported => {
+            Linking.canOpenURL(details.url).then(supported => {
               console.log(supported, '????');
               if (supported) {
-                Linking.openURL(item.url);
+                Linking.openURL(details.url);
               } else {
-                console.log("Don't know how to open URI: " + item.url);
+                console.log("Don't know how to open URI: " + details.url);
               }
             })
           }
@@ -49,7 +59,7 @@ export const DetailsScreen = ({navigation, route}) => {
       <View style={styles.contentContainer}>
         <Text style={[styles.descriptionText, styles.publishedAt]}>
           published at:
-          {moment().calendar('MMMM DDDD YYYY', item.publishedAt)}
+          {moment().calendar('MMMM DDDD YYYY', details.publishedAt)}
         </Text>
       </View>
     </ScrollView>
