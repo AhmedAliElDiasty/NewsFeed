@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Props } from '../../../App';
+import { translate } from '../../i18n';
 import { Article } from '../../interfaces/newsTypes';
 import { styles } from './styles';
 
@@ -30,9 +31,11 @@ export const DetailsScreen = ({ route }: MyProps) => {
         style={styles.image}
         source={{ uri: details.urlToImage }}
       />
-      <View style={styles.contentContainer}>
-        <Text>Author: {details.author}</Text>
-      </View>
+      {details.author &&
+        <View style={styles.contentContainer}>
+          <Text style={styles.author}>{translate("details.author")} {details.author}</Text>
+        </View>
+      }
       <View style={styles.contentContainer}>
         <Text style={styles.titleText}>{details.title}</Text>
       </View>
@@ -53,12 +56,12 @@ export const DetailsScreen = ({ route }: MyProps) => {
             })
           }
           accessibilityLabel="Learn more about this purple button">
-          <Text style={styles.link}>Learn More</Text>
+          <Text style={styles.link}>{translate('details.learnMore')}</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.contentContainer}>
         <Text style={[styles.descriptionText, styles.publishedAt]}>
-          published at:
+          {translate('details.publishedAt')}
           {moment().calendar('MMMM DDDD YYYY', details.publishedAt)}
         </Text>
       </View>

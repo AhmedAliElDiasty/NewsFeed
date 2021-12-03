@@ -12,6 +12,9 @@ export const styles = StyleSheet.create({
     width: '100%',
     height: 200,
   },
+  author: {
+    textAlign: 'left',
+  },
   contentContainer: {
     margin: 10,
   },

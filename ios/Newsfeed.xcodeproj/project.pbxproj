@@ -96,6 +96,14 @@
 			name = Newsfeed;
 			sourceTree = "<group>";
 		};
+		21DEEE7B4AE940278EAC3FBE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +142,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				6CB5B36685062CB7259F0DD3 /* Pods */,
+				21DEEE7B4AE940278EAC3FBE /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";

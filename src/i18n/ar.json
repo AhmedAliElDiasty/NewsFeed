@@ -1,0 +1,16 @@
+{
+  "home": {
+    "home": "الرئيسية",
+    "search": "بحث"
+  },
+  "details": {
+    "details": "التفاصيل",
+    "author": "بواسطة",
+    "learnMore": "المزية من التفاصيل",
+    "publishedAt": "نشر في"
+  },
+  "settings": {
+    "settings": "الإعدادات",
+    "language": "اللغة"
+  }
+}

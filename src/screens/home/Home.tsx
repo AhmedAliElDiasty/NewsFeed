@@ -6,10 +6,12 @@ import {
   RefreshControl,
   TextInput,
   Text,
+  I18nManager,
 } from 'react-native';
 import { Props } from '../../../App';
 import { getNewsApi } from '../../api/NewsApi';
 import { NewsArticleItem } from '../../components';
+import { translate } from '../../i18n';
 import { Article } from '../../interfaces/newsTypes';
 import { styles } from './styles';
 
@@ -40,10 +42,13 @@ export const HomeScreen = ({ navigation }: Props) => {
 
   return (
     <View style={styles.container}>
+      <SafeAreaView />
       <TextInput
         value={searchValue}
         onChangeText={setSearchValue}
         style={styles.textInputStyles}
+        placeholder={translate('home.search') as string}
+        textAlign={I18nManager.isRTL ? 'right' : 'left'}
       />
       <FlatList
         data={searchValue ? filteredData : data}

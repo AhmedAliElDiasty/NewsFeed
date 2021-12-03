@@ -1,0 +1,16 @@
+{
+  "home": {
+    "home": "Home",
+    "search": "Search"
+  },
+  "details": {
+    "details": "Details",
+    "author": "author: ",
+    "learnMore": "learn more",
+    "publishedAt": "published at: "
+  },
+  "settings": {
+    "settings": "Settings",
+    "language": "Language"
+  }
+}

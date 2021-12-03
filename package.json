@@ -15,22 +15,30 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.15.14",
+    "@react-navigation/material-bottom-tabs": "^6.0.9",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
     "axios": "^0.24.0",
+    "i18n-js": "^3.8.0",
     "moment": "^2.29.1",
     "react": "17.0.2",
     "react-native": "0.66.3",
+    "react-native-paper": "^4.10.1",
+    "react-native-restart": "0.0.22",
     "react-native-safe-area-context": "^3.3.2",
-    "react-native-screens": "^3.10.0"
+    "react-native-screens": "^3.10.0",
+    "react-native-vector-icons": "^9.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@types/i18n-js": "^3.8.2",
     "@types/jest": "^27.0.3",
     "@types/react": "^17.0.37",
     "@types/react-native": "^0.66.6",
+    "@types/react-native-vector-icons": "^6.4.10",
     "@types/react-test-renderer": "^17.0.1",
     "babel-jest": "^26.6.3",
     "eslint": "7.14.0",
@@ -41,5 +49,68 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "eslintConfig": {
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "prettier",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react/recommended",
+      "plugin:react-native/all",
+      "standard"
+    ],
+    "plugins": [
+      "@typescript-eslint",
+      "react",
+      "react-native"
+    ],
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "project": "./tsconfig.json"
+    },
+    "settings": {
+      "react": {
+        "pragma": "React",
+        "version": "detect"
+      }
+    },
+    "globals": {
+      "__DEV__": false,
+      "jasmine": false,
+      "beforeAll": false,
+      "afterAll": false,
+      "beforeEach": false,
+      "afterEach": false,
+      "test": false,
+      "expect": false,
+      "describe": false,
+      "jest": false,
+      "it": false
+    },
+    "rules": {
+      "@typescript-eslint/ban-ts-ignore": 0,
+      "@typescript-eslint/explicit-function-return-type": 0,
+      "@typescript-eslint/explicit-member-accessibility": 0,
+      "@typescript-eslint/explicit-module-boundary-types": 0,
+      "@typescript-eslint/indent": 0,
+      "@typescript-eslint/member-delimiter-style": 0,
+      "@typescript-eslint/no-empty-interface": 0,
+      "@typescript-eslint/no-explicit-any": 0,
+      "@typescript-eslint/no-object-literal-type-assertion": 0,
+      "@typescript-eslint/no-var-requires": 0,
+      "comma-dangle": 0,
+      "multiline-ternary": 0,
+      "no-undef": 0,
+      "no-unused-vars": 0,
+      "no-use-before-define": "off",
+      "quotes": 0,
+      "react-native/no-raw-text": 0,
+      "react/no-unescaped-entities": 0,
+      "react/prop-types": "off",
+      "space-before-function-paren": 0
+    }
   }
 }
