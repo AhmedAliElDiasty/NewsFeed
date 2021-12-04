@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment, { MomentInput } from 'moment';
 import React from 'react';
 import {
   View,
@@ -6,13 +6,12 @@ import {
   Image,
   ScrollView,
   Linking,
-  Button,
   TouchableOpacity,
 } from 'react-native';
-import { Props } from '../../../App';
 import { translate } from '../../i18n';
 import { Article } from '../../interfaces/newsTypes';
 import { styles } from './styles';
+import { useTheme } from '@react-navigation/native';
 
 interface MyProps {
   route: {
@@ -24,6 +23,7 @@ interface MyProps {
 
 export const DetailsScreen = ({ route }: MyProps) => {
   const { details } = route.params;
+  const { colors } = useTheme();
   return (
     <ScrollView style={styles.container}>
       <Image
@@ -33,14 +33,14 @@ export const DetailsScreen = ({ route }: MyProps) => {
       />
       {details.author &&
         <View style={styles.contentContainer}>
-          <Text style={styles.author}>{translate("details.author")} {details.author}</Text>
+          <Text style={[styles.author, { color: colors.text }]}>{translate("details.author")} {details.author}</Text>
         </View>
       }
       <View style={styles.contentContainer}>
-        <Text style={styles.titleText}>{details.title}</Text>
+        <Text style={[styles.titleText, { color: colors.text }]}>{details.title}</Text>
       </View>
       <View style={styles.contentContainer}>
-        <Text style={styles.descriptionText}>{details.description}</Text>
+        <Text style={[styles.descriptionText, { color: colors.text }]}>{details.description}</Text>
       </View>
       <View style={styles.contentContainer}>
         <TouchableOpacity
@@ -60,9 +60,9 @@ export const DetailsScreen = ({ route }: MyProps) => {
         </TouchableOpacity>
       </View>
       <View style={styles.contentContainer}>
-        <Text style={[styles.descriptionText, styles.publishedAt]}>
+        <Text style={[styles.publishedAt, { color: colors.text }]}>
           {translate('details.publishedAt')}
-          {moment().calendar('MMMM DDDD YYYY', details.publishedAt)}
+          {moment(details.publishedAt as MomentInput).format('MMMM Do YYYY, h:mm:ss a')}
         </Text>
       </View>
     </ScrollView>

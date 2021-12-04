@@ -13,12 +13,13 @@ export const styles = StyleSheet.create({
     marginHorizontal: 4,
   },
   radio_button: {
-    height: 22,
-    width: 22,
-    borderRadius: 14,
+    height: 16,
+    width: 16,
+    borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
+    borderWidth: 2,
   },
   label: {
     paddingHorizontal: 8,
@@ -27,10 +28,9 @@ export const styles = StyleSheet.create({
     fontWeight: '500',
   },
   active_view: {
-    height: 15,
-    width: 15,
-    borderRadius: 14,
-    borderWidth: 3,
-    borderColor: color.switchBlue,
+    height: 6,
+    width: 6,
+    margin: 20,
+    borderRadius: 3,
   },
 });

@@ -5,12 +5,13 @@
   },
   "details": {
     "details": "Details",
-    "author": "author: ",
-    "learnMore": "learn more",
-    "publishedAt": "published at: "
+    "author": "Author: ",
+    "learnMore": "Learn more",
+    "publishedAt": "Published at: "
   },
   "settings": {
     "settings": "Settings",
-    "language": "Language"
+    "language": "Language",
+    "themes": "Themes"
   }
 }

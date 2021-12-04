@@ -20,19 +20,17 @@ export const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 20,
-    color: '#000',
   },
   descriptionText: {
     fontSize: 17,
-    color: '#222',
   },
   linkContainer: {
     alignSelf: 'center',
   },
   link: {
-    color: '#841584',
+    color: '#00BFFF',
   },
   publishedAt: {
-    textAlign: 'right',
+    textAlign: 'left',
   },
 });

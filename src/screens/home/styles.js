@@ -9,8 +9,9 @@ export const styles = StyleSheet.create({
   textInputStyles: {
     width: '90%',
     margin: 12,
-    borderWidth: 0.2,
+    borderWidth: 1,
     padding: 10,
     borderRadius: 10,
+    borderColor: '#888',
   },
 });

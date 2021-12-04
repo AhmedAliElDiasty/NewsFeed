@@ -14,6 +14,8 @@ import { NewsArticleItem } from '../../components';
 import { translate } from '../../i18n';
 import { Article } from '../../interfaces/newsTypes';
 import { styles } from './styles';
+import { useTheme } from '@react-navigation/native';
+
 
 
 export const HomeScreen = ({ navigation }: Props) => {
@@ -21,6 +23,7 @@ export const HomeScreen = ({ navigation }: Props) => {
   const [filteredData, setFilteredData] = useState<Article[]>([]);
   const [refresh, setRefresh] = useState(false);
   const [searchValue, setSearchValue] = useState('');
+  const { colors } = useTheme();
   const getApi = async () => {
     try {
       const response = await getNewsApi();
@@ -46,9 +49,10 @@ export const HomeScreen = ({ navigation }: Props) => {
       <TextInput
         value={searchValue}
         onChangeText={setSearchValue}
-        style={styles.textInputStyles}
+        style={[styles.textInputStyles]}
         placeholder={translate('home.search') as string}
         textAlign={I18nManager.isRTL ? 'right' : 'left'}
+        placeholderTextColor="#888"
       />
       <FlatList
         data={searchValue ? filteredData : data}
@@ -60,6 +64,7 @@ export const HomeScreen = ({ navigation }: Props) => {
               await getApi();
               setRefresh(false)
             }}
+            tintColor={colors.notification}
           />
         }
         renderItem={({ item, index }) => {

@@ -3,12 +3,12 @@ import {StyleSheet} from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    // padding: 5,
+    paddingVertical: 4,
     marginVertical: 5,
     marginHorizontal: 10,
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: 'white',
+    backgroundColor: '#666',
     alignItems: 'center',
     borderRadius: 10,
   },
@@ -17,8 +17,11 @@ export const styles = StyleSheet.create({
     height: 80,
     borderRadius: 15,
     margin: 5,
+    backgroundColor: 'white',
   },
   textContainer: {
     width: '60%',
+    paddingRight: 10,
+    paddingLeft: 3,
   },
 });
