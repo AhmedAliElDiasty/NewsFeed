@@ -5,7 +5,7 @@ import {NewsInterface} from '../interfaces/newsTypes';
 export const getNewsApi: () => Promise<NewsInterface> = async () => {
   try {
     const res = await Axios.get(
-      `https://newsapi.org/v2/everything?q=tesla&from=2021-11-03&sortBy=publishedAt&apiKey=${urls.Api_key}`,
+      `https://newsapi.org/v2/everything?q=tesla&from=2021-11-06&sortBy=publishedAt&apiKey=${urls.Api_key}`,
     );
     return res.data;
   } catch (error) {

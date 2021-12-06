@@ -1,6 +1,6 @@
 import React, { ContextType, createContext, } from 'react';
 import { I18nManager, Platform, useColorScheme } from 'react-native';
-import { NavigationContainer, DarkTheme, DefaultTheme, Theme } from '@react-navigation/native';
+import { NavigationContainer, DarkTheme, DefaultTheme, Theme, LinkingOptions } from '@react-navigation/native';
 import { createNativeStackNavigator, } from '@react-navigation/native-stack';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -14,7 +14,7 @@ import "dayjs/locale/en"
 import { translate } from './src/i18n';
 import I18n from 'i18n-js';
 import { DARK_COLORS, LIGHT_COLORS } from './src/utils/themes/colors';
-import { Button } from 'react-native-paper';
+
 
 const Stack = createNativeStackNavigator();
 interface ContextProps {
@@ -44,7 +44,7 @@ function App() {
   function HomeStack() {
     return (
       <Stack.Navigator
-        initialRouteName="Home"
+        // initialRouteName="Home"
         screenOptions={{
           headerTitleAlign: 'center',
           statusBarStyle: theme == 'Light' ? 'dark' : 'light',
@@ -65,6 +65,7 @@ function App() {
         title: translate('settings.settings') as string,
         headerTitleAlign: 'center',
         statusBarStyle: theme == 'Light' ? 'dark' : 'light',
+        headerShown: Platform.OS == 'android' ? false : true,
       }}>
         <Stack.Screen name="Settings" component={SettingsScreen} />
       </Stack.Navigator>
@@ -72,6 +73,7 @@ function App() {
   }
 
   React.useEffect(() => {
+
     ; (async () => {
       const lang = await loadString("lang")
       if (lang === "en") {
@@ -106,9 +108,29 @@ function App() {
       ...LIGHT_COLORS
     }
   }
+  const linking: LinkingOptions<ReactNavigation.RootParamList> | undefined = {
+    prefixes: ['news://'],
+    config: {
+      screens: {
+        path: 'home',
+        HomeStack: {
+          screens: {
+            HomeScreen: 'Home',
+            DetailsScreen: 'Details',
+          },
+        },
+        SettingStack: {
+          path: 'settings',
+          screens: {
+            SettingsScreen: "Settings",
+          }
+        }
+      },
+    }
+  };
   return (
-    <ThemeContext.Provider value={themeData}>
-      <NavigationContainer theme={theme == 'Light' ? myLightTheme : myDarkTheme} >
+    <ThemeContext.Provider value={themeData} >
+      <NavigationContainer linking={linking} theme={theme == 'Light' ? myLightTheme : myDarkTheme} >
         <Tab.Navigator
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color }) => {
@@ -133,7 +155,7 @@ function App() {
           <Tab.Screen name="Settings" component={SettingStack} options={{ title: translate('settings.settings') as string }} />
         </Tab.Navigator>
       </NavigationContainer>
-    </ThemeContext.Provider>
+    </ThemeContext.Provider >
 
   );
 }
