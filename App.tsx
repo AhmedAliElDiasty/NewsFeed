@@ -48,7 +48,7 @@ function App() {
         screenOptions={{
           headerTitleAlign: 'center',
           statusBarStyle: theme == 'Light' ? 'dark' : 'light',
-          headerTintColor: theme == 'Light' ? '#000' : '#fff',
+          headerTintColor: Platform.OS == 'ios' && theme == 'Light' ? '#000' : '#fff',
           headerBackTitle: '',
           // headerBackVisible: Platform.OS == 'android' ? false : true,
           headerShown: Platform.OS == 'android' ? false : true,
@@ -64,7 +64,7 @@ function App() {
       <Stack.Navigator screenOptions={{
         title: translate('settings.settings') as string,
         headerTitleAlign: 'center',
-        statusBarStyle: theme == 'Light' ? 'dark' : 'light',
+        statusBarStyle: Platform.OS == 'ios' && theme == 'Light' ? 'dark' : 'light',
         headerShown: Platform.OS == 'android' ? false : true,
       }}>
         <Stack.Screen name="Settings" component={SettingsScreen} />
