@@ -10,7 +10,7 @@
     "start": "react-native start",
     "device": "npx react-native run-ios --device",
     "release": "npx react-native run-android --variant=release",
-    "build:release": "npm run env:staging &&  cd android &&  ./gradlew :app:assembleRelease",
+    "build:release": "cd android &&  ./gradlew :app:assembleRelease",
     "test": "jest",
     "lint": "eslint ."
   },
